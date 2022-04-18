@@ -1,0 +1,11 @@
+.expired-only {
+  all: unset;
+  color: blue;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:active,
+  &:focus {
+    color: darkblue;
+  }
+}

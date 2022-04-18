@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [[ $# -lt 2 ]]; then
+    echo -e "\nИспользование: $0 [проект] [порт]\n"
+    exit 1
+fi
+
+if [ ! -d "$1" ]; then
+    echo -e "\nПапка $1 не существует\n"
+    exit 1
+fi
+
+if [[ $(netstat -anp tcp | grep $2) ]]; then
+    echo -e "\nПорт $2 уже используется.\n";
+    exit 1
+fi
+
+cd $1/web && php -S localhost:$2
